@@ -1,0 +1,26 @@
+<ion-app>
+                <ion-header translucent>
+                  <ion-toolbar>
+                    <ion-title>Alert</ion-title>
+                  </ion-toolbar>
+                </ion-header>,
+                <ion-content fullscreen class="ion-padding">
+                  <ion-alert-controller></ion-alert-controller>
+                  <ion-button expand="block">Show Alert</ion-button>
+                </ion-content>
+              </ion-app>
+            
+              <script>
+                const button = document.querySelector('ion-button');
+                button.addEventListener('click', handleButtonClick);
+            
+                async function handleButtonClick() {
+                  const alert = await alertController.create({
+                    header: 'Use this lightsaber?',
+                    message: 'Do you agree to use this lightsaber to do good across the galaxy?',
+                    buttons: ['Disagree', 'Agree']
+                  });
+            
+                  await alert.present();
+                }
+              </script>
