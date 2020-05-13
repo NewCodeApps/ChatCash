@@ -21,6 +21,34 @@
           window.alertController = alertController;
         </script>
 
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-database.js"></script>
+
+
+        <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyApqhfOFAvwj8Y3iRh9uWtw9fcrgeSOTCE",
+        authDomain: "chatcash-e2.firebaseapp.com",
+        databaseURL: "https://chatcash-e2.firebaseio.com",
+        projectId: "chatcash-e2",
+        storageBucket: "chatcash-e2.appspot.com",
+        messagingSenderId: "558179732054",
+        appId: "1:558179732054:web:8f4f27769ff1bf855cc9f7",
+        measurementId: "G-8KVBV1PX86"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+        </script> 
+
     </head>
 
     <body>
@@ -38,6 +66,12 @@
           
             <ion-tab tab="tab-transfer">
               <ion-nav></ion-nav>
+             <ion-text>
+               <h3 id="trans-amt">Loading</h3>
+             </ion-text>
+             <script>
+               
+             </script>
             </ion-tab>
 
             <ion-tab tab="tab-marketplace">
@@ -99,7 +133,7 @@
             </ion-tab-bar>
           
           </ion-tabs>
-        </ion-app> 
+        </ion-app>  
     </body>
 
     <footer>
