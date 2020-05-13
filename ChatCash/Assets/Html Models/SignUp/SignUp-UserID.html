@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
     <meta name="robots" content="noindex, nofollow">
 
-    <title>Login With Your User ID</title>
+    <title>Sign Up for a User ID</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <style type="text/css">
@@ -11,7 +13,7 @@
 /* BASIC */
 
 html {
-  background-image: url("Assets/abstract-art-artistic-background-1103970.jpg");
+  background-image: url("/ChatCash/Assets/Images/abstract-art-artistic-background-1103970.jpg");
 }
 
 body {
@@ -295,19 +297,46 @@ input[type=text]:placeholder {
       <img src="/ChatCash/Assets/Images/Logos/logo_transparent.png" id="icon" alt="User Icon">
     </div>
 
+    
     <!-- Login Form -->
     <form>
-      <input type="text" id="UserID" class="fadeIn second" name="Login-UserID" placeholder="UserID">
-      <input type="submit" class="fadeIn fourth" value="Log In">
+      <h5>Your User ID is:</h5>
+      <h3 id="idgen"></h3>
+      <script>
+        $("submit").click(function(){
+    $.post("https://cors-anywhere.herokuapp.com/https://postb.in/b/1589401766327-5929093307349,
+    {
+      name: "Donald Duck",
+      city: "Duckburg"
+    },
+    function(data,status){
+      alert("Data: " + data + "\nStatus: " + status);
+    });
+      </script>
+      <script>
+        var x = document.getElementById("idgen")
+        var id = Math.floor((Math.random() * 999999999999) + 000000000000);
+        x.innerHTML = id
+        console.log(id);
+        window.$_GET = new URLSearchParams(location.search);
+        var signupname = $_GET.get("Name");
+        console.log(signupname);
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "https://cors-anywhere.herokuapp.com/https://postb.in/b/1589401766327-5929093307349", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("?name=" + signupname);
+      </script>
+      <input type="text" id="Name" class="fadeIn second" name="Name" placeholder="Name">
+      <input type="submit" id="submit" class="fadeIn fourth" value="Sign Up">
     </form>
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot ID?</a>
+      <!--<a class="underlineHover" href="#">Forgot ID?</a>
       <p>
         
-      </p>
-      <a class="underlineHover" href="#">No UserID? Create One!</a>
+      </p>-->
+      <a class="underlineHover" href="#">Have a User ID? Login</a>
     </div>
 
   </div>
