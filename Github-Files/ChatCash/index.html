@@ -1,0 +1,252 @@
+<html lang="en">
+    <head>
+        <title>ChatCash</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        var ctitle, csubtitle, ccontent, a , b, c, d, e, cphotourl, clinkbackurl, xmlDoc, txttitle, txtsubtitle, txtcontent, txtphotourl, txtlinkbackurl;
+        <!-- import Ionic Framework -->
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+        <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"/>
+
+        <!-- import the webpage's stylesheet -->
+        <link rel="stylesheet" href="/style.css" />
+
+        <!-- import the webpage's javascript file -->
+        <script src="/script.js" defer></script>
+
+        <!--import alertContoller-->
+        <script type="module">
+          import { alertController } from 'https://cdn.jsdelivr.net/npm/@ionic/core@next/dist/ionic/index.esm.js';
+          window.alertController = alertController;
+        </script>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-database.js"></script>
+
+
+        <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyApqhfOFAvwj8Y3iRh9uWtw9fcrgeSOTCE",
+        authDomain: "chatcash-e2.firebaseapp.com",
+        databaseURL: "https://chatcash-e2.firebaseio.com",
+        projectId: "chatcash-e2",
+        storageBucket: "chatcash-e2.appspot.com",
+        messagingSenderId: "558179732054",
+        appId: "1:558179732054:web:8f4f27769ff1bf855cc9f7",
+        measurementId: "G-8KVBV1PX86"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+        </script> 
+
+          <script>
+  function includeHTML() {
+    var z, i, elmnt, file, xhttp;
+    /*loop through a collection of all HTML elements:*/
+    z = document.getElementsByTagName("*");
+    for (i = 0; i < z.length; i++) {
+      elmnt = z[i];
+      /*search for elements with a certain atrribute:*/
+      file = elmnt.getAttribute("w3-include-html");
+      if (file) {
+        /*make an HTTP request using the attribute value as the file name:*/
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4) {
+            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+            /*remove the attribute, and call this function once more:*/
+            elmnt.removeAttribute("w3-include-html");
+            includeHTML();
+          }
+        }      
+        xhttp.open("GET", file, true);
+        xhttp.send();
+        /*exit the function:*/
+        return;
+      }
+    }
+  };
+  </script>
+    </head>
+
+    <body>
+      <ion-app>
+        <ion-tabs>
+            <ion-tab tab="tab-home">
+              <ion-nav></ion-nav>
+              <ion-header translucent>
+                <ion-toolbar>
+                  <ion-title size="large">Home</ion-title>
+                </ion-toolbar>
+              </ion-header>
+            </ion-tab>
+          
+            <ion-tab tab="tab-transfer">
+              <ion-nav></ion-nav>
+             <ion-text>
+               <h3 id="trans-amt">Enter your User Id</h3>
+             </ion-text>
+             <script id="trans-amt-pull" src="Assets/Scripts/Firebase.database.out.js"></script>
+            </ion-tab>
+
+            <ion-tab tab="tab-marketplace">
+              <ion-nav></ion-nav>
+              <div w3-include-html="Assets\HTML\Card\Prod\XML\Card_Live_XML.html">
+                <script>
+                  function GenCard() {
+                    var defCard = document.createElement("ION-CARD");
+                    var defCardHeader = document.createElement("ION-CARD-HEADER");
+                    var defCardTitle = document.createElement("ION-CARD-TITLE");
+                    var defCardSubtitle = document.createElement("ION-CARD-SUBTITLE");
+                    var defCardContent = document.createElement("ION-CARD-CONTENT");
+                    
+                    var dummyipsum = "Lorem ipsum dolor. Sit amet ipsum. Tortor duis rhoncus. Sed quam urna. Tempor et ipsum erat egestas feugiat duis nullam id in mollis arcu. Magna fringilla praesent. Sint eu molestie inceptos lacus vestibulum eget tortor est. Nunc curabitur dui cursus id aenean nec rhoncus vel egestas id vel mauris orci ut. Amet commodo bibendum justo enim ullamcorper. Et in ut.";
+
+                    function loadXMLDoc(sentUrl) {
+                      var xhttp = new XMLHttpRequest();
+                      xhttp.onreadystatechange = function() {
+                      if (this.readyState == 4 && this.status == 200) {
+                        XMLWEBParse(this);
+                        var e = this;
+                      }
+                    };
+                    xhttp.open("GET", "test.xml", true);
+                    xhttp.send();
+                    }
+                    
+                    //var parser, xmlDoc;
+                    //parser = new DOMParser();
+                    //xmlDoc = parser.parseFromString(text,"text/xml");
+                    //document.getElementById("demo").innerHTML =
+                    //xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+
+                    function XMLParse1(xml) {
+                      //
+                      xmlDoc = xml.responseXML;
+                      txt = "";
+                      ctitle = xmlDoc.getElementsByTagName("Title");
+                      csubtitle = xmlDoc.getElementsByTagName("Subtitle");
+                      ccontent = xmlDoc.getElementsByTagName("Content");
+                      cphotourl = xmlDoc.getElementsByTagName("PhotoUrl");
+                      clinkbackurl = xmlDoc.getElementsByTagName("LinkBackUrl");
+                      for (a = 0; a< ctitle.length; a++) {
+                        txttitle += ctitle[a].childNodes[0].nodeValue + "<br>";
+                      }
+                      for (b = 0; b< csubtitle.length; b++) {
+                        txtsubtitle += csubtitle[b].childNodes[0].nodeValue + "<br>";
+                      }
+                      for (c = 0; c< ccontent.length; c++) {
+                        txtcontent += ccontent[c].childNodes[0].nodeValue + "<br>";
+                      }
+                      for (d = 0; d< cphotourl.length; d++) {
+                        txtphotourl += cphotourl[d].childNodes[0].nodeValue + "<br>";
+                      }
+                      for (e = 0; e< clinkbackurl.length; e++) {
+                        txtlinkbackurl += clinkbackurl[e].childNodes[0].nodeValue + "<br>";
+                      }
+                      document.getElementById("DemoOut1").innerHTML = txtcontent;
+                      document.getElementById("DemoOut2").innerHTML = txttitle;
+                      document.getElementById("DemoOut3").innerHTML = txtsubtitle;
+                      document.getElementById("DemoOut4").innerHTML = txtphotourl;
+                      document.getElementById("DemoOut5").innerHTML = txtlinkbackurl;
+                      console.log(txtcontent);
+                      console.log(txttitle);
+                      console.log(txtsubtitle);
+                      console.log(txtphotourl);
+                      console.log(txtlinkbackurl);
+                    }
+
+                    loadXMLDoc();
+
+                    defCardTitle.innerHTML = txttitle;
+                    defCardSubtitle.innerHTML = txtsubtitle;
+                    defCardContent.innerHTML = txtcontent;
+
+                    document.body.appendChild(defCard);
+                    defCard.appendChild(defCardHeader);
+                    defCardHeader.appendChild(defCardTitle);
+                    defCardHeader.appendChild(defCardSubtitle);
+                    defCard.appendChild(defCardContent);
+                  }
+                  </script>
+                  
+              </div>
+              <script>
+                includeHTML();
+              </script>
+            </ion-tab>
+          
+            <ion-tab tab="tab-admin">
+              <ion-nav></ion-nav>
+            </ion-tab>
+
+            <ion-tab tab="tab-earn">
+              <ion-nav></ion-nav>
+            </ion-tab>
+
+            <ion-tab tab="tab-account" component="page-account">
+              <ion-nav></ion-nav>
+            </ion-tab>
+          
+            <ion-tab tab="tab-settings" component="page-settings">
+              <ion-nav></ion-nav>
+            </ion-tab>
+          
+            <ion-tab-bar slot="bottom">
+              <ion-tab-button tab="tab-home">
+                <ion-icon name="home"></ion-icon>
+                <ion-label>Home</ion-label>
+                <!--<ion-badge></ion-badge>-->
+              </ion-tab-button>
+          
+              <ion-tab-button tab="tab-transfer">
+                <ion-icon name="send"></ion-icon>
+                <ion-label>Transfer</ion-label>
+              </ion-tab-button>
+
+              <ion-tab-button tab="tab-marketplace">
+                <ion-icon name="basket"></ion-icon>
+                <ion-label>Marketplace</ion-label>
+              </ion-tab-button>
+          
+              <ion-tab-button tab="tab-admin">
+                <ion-icon name="person"></ion-icon>
+                <ion-label>Admin</ion-label>
+              </ion-tab-button>
+
+              <ion-tab-button tab="tab-earn">
+                <ion-icon name="list"></ion-icon>
+                <ion-label>Earn</ion-label>
+              </ion-tab-button>
+
+              <ion-tab-button tab="tab-account">
+                <ion-icon name="person-circle"></ion-icon>
+                <ion-label>Account</ion-label>
+              </ion-tab-button>
+          
+              <ion-tab-button tab="tab-settings">
+                <ion-icon name="cog"></ion-icon>
+                <ion-label>Settings</ion-label>
+              </ion-tab-button>
+            </ion-tab-bar>
+          
+          </ion-tabs>
+        </ion-app>  
+    </body>
+
+    <footer>
+
+    </footer>
+</html>
