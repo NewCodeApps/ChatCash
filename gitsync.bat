@@ -1,5 +1,9 @@
 git add *
-git commit -m "Auto Commit"
+git commit -m "Auto Commit Github"
 git pull ChatCash-Github master
 git push ChatCash-Github master
-pause
+
+git add *
+git commit -m "Auto Commit Gitlab"
+git pull origin master
+git push origin master
