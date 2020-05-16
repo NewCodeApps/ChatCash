@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        var ctitle, csubtitle, ccontent, a , b, c, d, e, cphotourl, clinkbackurl, xmlDoc, txttitle, txtsubtitle, txtcontent, txtphotourl, txtlinkbackurl;
         <!-- import Ionic Framework -->
         <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
         <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
@@ -118,6 +119,7 @@
                       xhttp.onreadystatechange = function() {
                       if (this.readyState == 4 && this.status == 200) {
                         XMLWEBParse(this);
+                        var e = this;
                       }
                     };
                     xhttp.open("GET", "test.xml", true);
@@ -130,8 +132,8 @@
                     //document.getElementById("demo").innerHTML =
                     //xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
 
-                    function XMLWEBParse(xml) {
-                      var ctitle, csubtitle, ccontent, cphotourl, clinkbackurl, i, xmlDoc, txttitle, txtsubtitle, txtcontent, txtphotourl, txtlinkbackurl;
+                    function XMLParse1(xml) {
+                      //
                       xmlDoc = xml.responseXML;
                       txt = "";
                       ctitle = xmlDoc.getElementsByTagName("Title");
@@ -139,22 +141,26 @@
                       ccontent = xmlDoc.getElementsByTagName("Content");
                       cphotourl = xmlDoc.getElementsByTagName("PhotoUrl");
                       clinkbackurl = xmlDoc.getElementsByTagName("LinkBackUrl");
-                      for (i = 0; i< ctitle.length; i++) {
-                        txttitle += ctitle[i].childNodes[0].nodeValue;
+                      for (a = 0; a< ctitle.length; a++) {
+                        txttitle += ctitle[a].childNodes[0].nodeValue + "<br>";
                       }
-                      for (i = 0; i< csubtitle.length; i++) {
-                        txtsubtitle += csubtitle[i].childNodes[0].nodeValue;
+                      for (b = 0; b< csubtitle.length; b++) {
+                        txtsubtitle += csubtitle[b].childNodes[0].nodeValue + "<br>";
                       }
-                      for (i = 0; i< ccontent.length; i++) {
-                        txtcontent += ccontent[i].childNodes[0].nodeValue;
+                      for (c = 0; c< ccontent.length; c++) {
+                        txtcontent += ccontent[c].childNodes[0].nodeValue + "<br>";
                       }
-                      for (i = 0; i< cphotourl.length; i++) {
-                        txtphotourl += cphotourl[i].childNodes[0].nodeValue;
+                      for (d = 0; d< cphotourl.length; d++) {
+                        txtphotourl += cphotourl[d].childNodes[0].nodeValue + "<br>";
                       }
-                      for (i = 0; i< clinkbackurl.length; i++) {
-                        txtlinkbackurl += clinkbackurl[i].childNodes[0].nodeValue;
+                      for (e = 0; e< clinkbackurl.length; e++) {
+                        txtlinkbackurl += clinkbackurl[e].childNodes[0].nodeValue + "<br>";
                       }
-                      //document.getElementById("demo").innerHTML = txt;
+                      document.getElementById("DemoOut1").innerHTML = txtcontent;
+                      document.getElementById("DemoOut2").innerHTML = txttitle;
+                      document.getElementById("DemoOut3").innerHTML = txtsubtitle;
+                      document.getElementById("DemoOut4").innerHTML = txtphotourl;
+                      document.getElementById("DemoOut5").innerHTML = txtlinkbackurl;
                       console.log(txtcontent);
                       console.log(txttitle);
                       console.log(txtsubtitle);
