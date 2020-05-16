@@ -3,7 +3,7 @@
         <Title>Test</Title>
         <Subtitle>Test</Subtitle>
         <Content>Test</Content>
-        <PhotoUrl></PhotoUrl>
-        <LinkBackUrl></LinkBackUrl>
+        <PhotoUrl>somenormalcrap.com/me.jpg</PhotoUrl>
+        <LinkBackUrl>null</LinkBackUrl>
     </card>
 </cardlist>
