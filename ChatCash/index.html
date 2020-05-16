@@ -4,7 +4,6 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        var ctitle, csubtitle, ccontent, a , b, c, d, e, cphotourl, clinkbackurl, xmlDoc, txttitle, txtsubtitle, txtcontent, txtphotourl, txtlinkbackurl;
         <!-- import Ionic Framework -->
         <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
         <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
@@ -50,35 +49,6 @@
       firebase.analytics();
         </script> 
 
-          <script>
-  function includeHTML() {
-    var z, i, elmnt, file, xhttp;
-    /*loop through a collection of all HTML elements:*/
-    z = document.getElementsByTagName("*");
-    for (i = 0; i < z.length; i++) {
-      elmnt = z[i];
-      /*search for elements with a certain atrribute:*/
-      file = elmnt.getAttribute("w3-include-html");
-      if (file) {
-        /*make an HTTP request using the attribute value as the file name:*/
-        xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4) {
-            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-            /*remove the attribute, and call this function once more:*/
-            elmnt.removeAttribute("w3-include-html");
-            includeHTML();
-          }
-        }      
-        xhttp.open("GET", file, true);
-        xhttp.send();
-        /*exit the function:*/
-        return;
-      }
-    }
-  };
-  </script>
     </head>
 
     <body>
@@ -96,96 +66,13 @@
             <ion-tab tab="tab-transfer">
               <ion-nav></ion-nav>
              <ion-text>
-               <h3 id="trans-amt">Enter your User Id</h3>
+               <h3 id="trans-amt"></h3>
              </ion-text>
              <script id="trans-amt-pull" src="Assets/Scripts/Firebase.database.out.js"></script>
             </ion-tab>
 
             <ion-tab tab="tab-marketplace">
               <ion-nav></ion-nav>
-              <div w3-include-html="Assets\HTML\Card\Prod\XML\Card_Live_XML.html">
-                <script>
-                  function GenCard() {
-                    var defCard = document.createElement("ION-CARD");
-                    var defCardHeader = document.createElement("ION-CARD-HEADER");
-                    var defCardTitle = document.createElement("ION-CARD-TITLE");
-                    var defCardSubtitle = document.createElement("ION-CARD-SUBTITLE");
-                    var defCardContent = document.createElement("ION-CARD-CONTENT");
-                    
-                    var dummyipsum = "Lorem ipsum dolor. Sit amet ipsum. Tortor duis rhoncus. Sed quam urna. Tempor et ipsum erat egestas feugiat duis nullam id in mollis arcu. Magna fringilla praesent. Sint eu molestie inceptos lacus vestibulum eget tortor est. Nunc curabitur dui cursus id aenean nec rhoncus vel egestas id vel mauris orci ut. Amet commodo bibendum justo enim ullamcorper. Et in ut.";
-
-                    function loadXMLDoc(sentUrl) {
-                      var xhttp = new XMLHttpRequest();
-                      xhttp.onreadystatechange = function() {
-                      if (this.readyState == 4 && this.status == 200) {
-                        XMLWEBParse(this);
-                        var e = this;
-                      }
-                    };
-                    xhttp.open("GET", "test.xml", true);
-                    xhttp.send();
-                    }
-                    
-                    //var parser, xmlDoc;
-                    //parser = new DOMParser();
-                    //xmlDoc = parser.parseFromString(text,"text/xml");
-                    //document.getElementById("demo").innerHTML =
-                    //xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
-
-                    function XMLParse1(xml) {
-                      //
-                      xmlDoc = xml.responseXML;
-                      txt = "";
-                      ctitle = xmlDoc.getElementsByTagName("Title");
-                      csubtitle = xmlDoc.getElementsByTagName("Subtitle");
-                      ccontent = xmlDoc.getElementsByTagName("Content");
-                      cphotourl = xmlDoc.getElementsByTagName("PhotoUrl");
-                      clinkbackurl = xmlDoc.getElementsByTagName("LinkBackUrl");
-                      for (a = 0; a< ctitle.length; a++) {
-                        txttitle += ctitle[a].childNodes[0].nodeValue + "<br>";
-                      }
-                      for (b = 0; b< csubtitle.length; b++) {
-                        txtsubtitle += csubtitle[b].childNodes[0].nodeValue + "<br>";
-                      }
-                      for (c = 0; c< ccontent.length; c++) {
-                        txtcontent += ccontent[c].childNodes[0].nodeValue + "<br>";
-                      }
-                      for (d = 0; d< cphotourl.length; d++) {
-                        txtphotourl += cphotourl[d].childNodes[0].nodeValue + "<br>";
-                      }
-                      for (e = 0; e< clinkbackurl.length; e++) {
-                        txtlinkbackurl += clinkbackurl[e].childNodes[0].nodeValue + "<br>";
-                      }
-                      document.getElementById("DemoOut1").innerHTML = txtcontent;
-                      document.getElementById("DemoOut2").innerHTML = txttitle;
-                      document.getElementById("DemoOut3").innerHTML = txtsubtitle;
-                      document.getElementById("DemoOut4").innerHTML = txtphotourl;
-                      document.getElementById("DemoOut5").innerHTML = txtlinkbackurl;
-                      console.log(txtcontent);
-                      console.log(txttitle);
-                      console.log(txtsubtitle);
-                      console.log(txtphotourl);
-                      console.log(txtlinkbackurl);
-                    }
-
-                    loadXMLDoc();
-
-                    defCardTitle.innerHTML = txttitle;
-                    defCardSubtitle.innerHTML = txtsubtitle;
-                    defCardContent.innerHTML = txtcontent;
-
-                    document.body.appendChild(defCard);
-                    defCard.appendChild(defCardHeader);
-                    defCardHeader.appendChild(defCardTitle);
-                    defCardHeader.appendChild(defCardSubtitle);
-                    defCard.appendChild(defCardContent);
-                  }
-                  </script>
-                  
-              </div>
-              <script>
-                includeHTML();
-              </script>
             </ion-tab>
           
             <ion-tab tab="tab-admin">
