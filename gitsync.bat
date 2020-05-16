@@ -7,3 +7,4 @@ git add *
 git commit -m "Auto Commit Gitlab"
 git pull origin master
 git push origin master
+pause
