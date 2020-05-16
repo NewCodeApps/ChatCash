@@ -104,7 +104,7 @@
               <ion-nav></ion-nav>
               <div w3-include-html="Assets\HTML\Card\Prod\XML\Card_Live_XML.html">
                 <script>
-                  function myFunc() {
+                  function GenCard() {
                     var defCard = document.createElement("ION-CARD");
                     var defCardHeader = document.createElement("ION-CARD-HEADER");
                     var defCardTitle = document.createElement("ION-CARD-TITLE");
@@ -113,14 +113,14 @@
                     
                     var dummyipsum = "Lorem ipsum dolor. Sit amet ipsum. Tortor duis rhoncus. Sed quam urna. Tempor et ipsum erat egestas feugiat duis nullam id in mollis arcu. Magna fringilla praesent. Sint eu molestie inceptos lacus vestibulum eget tortor est. Nunc curabitur dui cursus id aenean nec rhoncus vel egestas id vel mauris orci ut. Amet commodo bibendum justo enim ullamcorper. Et in ut.";
 
-                    function loadXMLDoc() {
+                    function loadXMLDoc(sentUrl) {
                       var xhttp = new XMLHttpRequest();
                       xhttp.onreadystatechange = function() {
                       if (this.readyState == 4 && this.status == 200) {
                         XMLWEBParse(this);
                       }
                     };
-                    xhttp.open("GET", "xmlhttp_info.txt", true);
+                    xhttp.open("GET", sentUrl.responseText, true);
                     xhttp.send();
                     }
                     
@@ -158,7 +158,7 @@
                       console.log(txtcontent, txtlinkbackurl, txtphotourl, txtsubtitle, txttitle);
                     }
 
-
+                    loadXMLDoc("test.xml");
 
                     defCardTitle.innerHTML = "Test";
                     defCardSubtitle.innerHTML = "This is a test.";
