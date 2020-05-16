@@ -1,3 +1,3 @@
 git add *
-git commit -a
-git push origin master
+git commit -m "Auto Commit"
+git push ChatCash-Github master
