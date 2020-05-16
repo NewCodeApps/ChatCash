@@ -140,22 +140,26 @@
                       cphotourl = xmlDoc.getElementsByTagName("PhotoUrl");
                       clinkbackurl = xmlDoc.getElementsByTagName("LinkBackUrl");
                       for (i = 0; i< ctitle.length; i++) {
-                        txttitle += ctitle[i].childNodes[0].nodeValue + "<br>";
+                        txttitle += ctitle[i].childNodes[0].nodeValue;
                       }
                       for (i = 0; i< csubtitle.length; i++) {
-                        txtsubtitle += csubtitle[i].childNodes[0].nodeValue + "<br>";
+                        txtsubtitle += csubtitle[i].childNodes[0].nodeValue;
                       }
                       for (i = 0; i< ccontent.length; i++) {
-                        txtcontent += ccontent[i].childNodes[0].nodeValue + "<br>";
+                        txtcontent += ccontent[i].childNodes[0].nodeValue;
                       }
                       for (i = 0; i< cphotourl.length; i++) {
-                        txtphotourl += cphotourl[i].childNodes[0].nodeValue + "<br>";
+                        txtphotourl += cphotourl[i].childNodes[0].nodeValue;
                       }
                       for (i = 0; i< clinkbackurl.length; i++) {
-                        txtlinkbackurl += clinkbackurl[i].childNodes[0].nodeValue + "<br>";
+                        txtlinkbackurl += clinkbackurl[i].childNodes[0].nodeValue;
                       }
-                      document.getElementById("demo").innerHTML = txt;
-                      console.log(txtcontent, txtlinkbackurl, txtphotourl, txtsubtitle, txttitle);
+                      //document.getElementById("demo").innerHTML = txt;
+                      console.log(txtcontent);
+                      console.log(txttitle);
+                      console.log(txtsubtitle);
+                      console.log(txtphotourl);
+                      console.log(txtlinkbackurl);
                     }
 
                     loadXMLDoc();
