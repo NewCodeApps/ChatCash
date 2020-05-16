@@ -113,6 +113,41 @@
                     
                     var dummyipsum = "Lorem ipsum dolor. Sit amet ipsum. Tortor duis rhoncus. Sed quam urna. Tempor et ipsum erat egestas feugiat duis nullam id in mollis arcu. Magna fringilla praesent. Sint eu molestie inceptos lacus vestibulum eget tortor est. Nunc curabitur dui cursus id aenean nec rhoncus vel egestas id vel mauris orci ut. Amet commodo bibendum justo enim ullamcorper. Et in ut.";
 
+                    function loadXMLDoc() {
+                      var xhttp = new XMLHttpRequest();
+                      xhttp.onreadystatechange = function() {
+                      if (this.readyState == 4 && this.status == 200) {
+                        XMLWEBParse(this);
+                      }
+                    };
+                    xhttp.open("GET", "xmlhttp_info.txt", true);
+                    xhttp.send();
+                    }
+                    
+                    var parser, xmlDoc;
+                    parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(text,"text/xml");
+                    document.getElementById("demo").innerHTML =
+                    xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+
+                    function XMLWEBParse(xml) {
+                      var ctitle, csubtitle, ccontent, cphotourl, clinkbackurl, i, xmlDoc, txttitle, txtsubtitle, txtcontent, txtphotourl, txtlinkbackurl;
+                      xmlDoc = xml.responseXML;
+                      txt = "";
+                      ctitle = xmlDoc.getElementsByTagName("Title");
+                      csubtitle = xmlDoc.getElementsByTagName("Subtitle");
+                      ccontent = xmlDoc.getElementsByTagName("Content");
+                      cphotourl = xmlDoc.getElementsByTagName("PhotoUrl");
+                      clinkbackurl = xmlDoc.getElementsByTagName("LinkBackUrl");
+                      for (i = 0; i< ctitle.length; i++) {
+                        txttitle += ctitle[i].childNodes[0].nodeValue + "<br>";
+                      }
+                      document.getElementById("demo").innerHTML = txt;
+
+                    }
+
+
+
                     defCardTitle.innerHTML = "Test";
                     defCardSubtitle.innerHTML = "This is a test.";
                     defCardContent.innerHTML = dummyipsum;
